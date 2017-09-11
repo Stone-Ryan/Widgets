@@ -2,16 +2,23 @@ import React, { Component } from 'react';
 
 class Autocomplete extends Component {
   constructor(props) {
-    super(props)
-    state = {
+    super(props);
+    this.state = {
       inputVal: '',
     }
 
+    this.matches = this.matches.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.selectName = this.selectName.bind(this);
   }
 
   handleInput(e) {
-    this.setState({ inputVal: e.currentTarget.value })
+    this.setState({ inputVal: e.currentTarget.value });
+  }
+
+  selectName(event) {
+    let name = event.currentTarget.innerText;
+    this.setState({inputVal: name});
   }
 
   matches() {
@@ -22,8 +29,8 @@ class Autocomplete extends Component {
     }
 
     this.props.names.forEach(name => {
-      let sub = name.slice(0, this.state.inputVal.length);
-      if (sub.toLowerCase() === this.state.inputVal.toLowerCase()) {
+      let substring = name.slice(0, this.state.inputVal.length);
+      if (substring.toLowerCase() === this.state.inputVal.toLowerCase()) {
         matches.push(name);
       }
     });
@@ -36,16 +43,20 @@ class Autocomplete extends Component {
   }
 
   render() {
-    <div className="autocomplete">
-      <input onChange={this.handleInput} value={this.state.inputVal} placeholder="Search..."/>
-      <ul>
-        matches().forEach( (match) => {
-          <li>
-            match
-          </li>
-        })
-      </ul>
-    </div>
+    let results = this.matches().map((result, i) => {
+      return (
+        <li key={i} onClick={this.selectName}>{result}</li>
+      );
+    });
+    return(
+      <div className="autocomplete">
+        <h2>Autocomplete</h2>
+        <input onChange={this.handleInput} value={this.state.inputVal} placeholder="Search..."/>
+        <ul>
+          {results}
+        </ul>
+      </div>
+    );
   }
 }
 

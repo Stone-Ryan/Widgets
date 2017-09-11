@@ -33,7 +33,7 @@ class ClockWidget extends Component {
 
     return (
       <div className="clock">
-        <h1>Clock</h1>
+        <h2>Clock</h2>
         <div>
           <p>Time</p>
           <p>{hours}:{minutes}:{seconds} PDT</p>
