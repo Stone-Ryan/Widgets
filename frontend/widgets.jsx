@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import ClockWidget from './clock_widget';
 import Autocomplete from './autocomplete';
+import Tabs from './tabs';
 
 const Names = [
   'Ana',
@@ -21,7 +22,7 @@ const Names = [
   'Reaper',
   'Reinhardt',
   'Roadhog',
-  'Solider76',
+  'Solider 76',
   'Sombra',
   'Symmetra',
   'Torbjörn',
@@ -30,6 +31,12 @@ const Names = [
   'Winston',
   'Zarya',
   'Zenyatta'
+]
+
+const Panes = [
+  {title: 'one', content: 'first one'},
+  {title: 'two', content: 'second one'},
+  {title: 'three', content: 'Third one'},
 ]
 
 class Root extends Component {
@@ -42,6 +49,9 @@ class Root extends Component {
         </div>
         <div>
           <Autocomplete names={Names} />
+        </div>
+        <div>
+          <Tabs panes={Panes} />
         </div>
       </div>
     );

@@ -35,10 +35,11 @@ class ClockWidget extends Component {
       <div className="clock">
         <h2>Clock</h2>
         <div>
-          <p>Time</p>
+          <p>Time:</p>
           <p>{hours}:{minutes}:{seconds} PDT</p>
         </div>
         <div>
+          <p>Date:</p>
           <p>{this.state.time.toDateString()}</p>
         </div>
       </div>
